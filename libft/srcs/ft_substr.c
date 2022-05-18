@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:44:55 by amiguez           #+#    #+#             */
-/*   Updated: 2022/04/25 13:49:30 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/18 20:09:27 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= (unsigned int) ft_strlen(s))
 		return (ft_strdup(""));
 	i = 0;
+	mal_size = len;
 	if ((size_t)ft_strlen(s) < len)
 		mal_size = ft_strlen(s);
-	else
-		mal_size = len;
 	ret_str = malloc (sizeof (char) * mal_size + 1);
 	if (!ret_str)
 		return (NULL);

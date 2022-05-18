@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:08:44 by amiguez           #+#    #+#             */
-/*   Updated: 2022/04/25 13:49:30 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/18 22:12:22 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ret_nl(char *ln, int i)
 	return (ln);
 }
 
+//free the 1st one
 char	*ft_strjoin_gnl(char *line, char *temp)
 {
 	char	*s_ret;
