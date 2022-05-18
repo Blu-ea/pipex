@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 12:55:55 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/18 23:26:47 by amiguez          ###   ########.fr       */
+/*   Created: 2022/05/18 17:21:25 by amiguez           #+#    #+#             */
+/*   Updated: 2022/05/18 22:27:27 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-int	main(int argc, char **argv, char **env)
+void	ft_print_tab(char **tab, char *name)
 {
-	t_pipe	data;
+	int	i;
 
-	if (argc != 5)
-		ft_error("Usage : ./pipex <infile> <cmd1> <cmd2> <outfile>");
-	parsing(argc, argv, env, &data);
-	printf("execve(%s, %s)\n", data.path[0], *data.cmd[0]);
-	execve (data.path[0], data.cmd[0], env);
-}
-
-void	ft_error(char *str)
-{
-	ft_putstr_fd(str, 2);
-	exit(0);
+	i = 0;
+	while (tab[i])
+	{
+		printf("%s [%d] = %s\n", name, i, tab[i]);
+		i++;
+	}
+	printf("\n");
 }

@@ -6,7 +6,7 @@
 #    By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/16 11:24:21 by amiguez           #+#    #+#              #
-#    Updated: 2022/05/16 14:52:50 by amiguez          ###   ########.fr        #
+#    Updated: 2022/05/18 17:24:57 by amiguez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME := pipex
 # /////////////////////////////////
 
 LST_SRCS	:=	main.c\
-				pars.c
+				pars.c\
+				debug.c
 LST_OBJS	:=	$(LST_SRCS:.c=.o)
 LST_INCS	:=	pipex.h
 LST_LIBFT	:=	libft.a
@@ -62,19 +63,20 @@ NORMINETTE	= $(shell norminette $(SRCS) | grep -i 'Error')
 
 all				: $(NAME)
 
-$(NAME)			: $(OBJS) $(LIBFT) $(INCS) Makefile
-	printf "${GREEN}Compiling...${END}"
+$(NAME)			: $(OBJS) $(INCS) Makefile | $(LIBFT)
+	printf "${GREEN}Compiling Pipex :${END}"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	printf "${ERASE}${WHITE}Compiling Pipex : ${GREEN}$(BOLD) Done${END}\n"
 
-# ifeq ($(NORMINETTE),$(NORMITEST))
-# 	printf "$(GREEN)Everything is ok\n$(END)"
-# else
-# 	printf "$(RED)$(SUR)THERE IS AN ERROR WITH NORMINETTE IN LIBFT FILES !!$(END)\n"
-# endif
+ifeq ($(NORMINETTE),$(NORMITEST))
+	printf "$(GREEN)Everything is $(BOLD)ok\n$(END)"
+else
+	printf "$(RED)$(SUR)THERE IS AN ERROR WITH NORMINETTE IN LIBFT FILES !!$(END)\n"
+endif
 
 $(DIR_OBJS)/%.o	:	$(DIR_SRCS)/%.c $(INCS) Makefile | $(DIR_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
-	printf "$(ERASE)Compiling Pipex : $(BLUE)$(BOLD)$<$(END)$(GREY)$(END)"
+	printf "$(ERASE)$(BLUE)$(BOLD)Compiling Pipex : $<$(END)"
 
 $(DIR_OBJS)		:
 	mkdir -p $(DIR_OBJS)
@@ -87,6 +89,7 @@ $(LIBFT)	:
 clean	:
 	make -C libft clean
 	rm -rf $(DIR_OBJS)
+	printf "/!\ Erasing $(DIR_OBJS) in Pipex$(END)\n"
 
 fclean	: clean
 	make -C libft fclean
@@ -94,5 +97,5 @@ fclean	: clean
 
 re		: fclean all
 
-.PHONY	: all clean fclean re
-#.SILENT	:
+.PHONY	: all clean fclean re $(LIBFT)
+.SILENT	:
