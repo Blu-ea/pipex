@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:53:13 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/21 09:23:12 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/21 10:09:45 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct s_pipe
 {
 	int		pipe[2];
-	int		pid;
+	int		pid[2];
 	char	**cmd[3];
 	char	*path[3];
 }					t_pipe;
