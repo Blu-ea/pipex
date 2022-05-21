@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:56:47 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/18 23:25:55 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/21 09:23:22 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	parsing(int argc, char **argv, char **env, t_pipe *data)
 		ft_error("No PATH found");
 	data->cmd[0] = ft_split(argv[2], ' ');
 	data->cmd[1] = ft_split(argv[3], ' ');
-	ft_print_tab(data->cmd[0], "cmd[0]");
 	data->path[0] = find_path(data->cmd[0][0], *env);
 	data->path[1] = find_path(data->cmd[1][0], *env);
 	if (!data->path[0] || !data->path[1])
 		ft_error("Error: Command not found");
+	data->path[2] = NULL;
+	data->cmd[2] = NULL;
+	ft_print_tab(data->path, "path");
 }
 
 char	*find_path(char *cmd, char *env)
@@ -38,7 +40,6 @@ char	*find_path(char *cmd, char *env)
 	sub = ft_substr(env, 5, ft_strlen(env) - 5);
 	path = ft_split(sub, ':');
 	free(sub);
-	ft_print_tab(path, "path");
 	while (path[i])
 	{
 		temp = ft_strjoin(path[i], "/");
@@ -52,4 +53,12 @@ char	*find_path(char *cmd, char *env)
 		i++;
 	}
 	return (NULL);
+}
+
+void	chek_pipe(t_pipe data)
+{
+	if (data.path[0] == NULL)
+		ft_error("Error: Command not found");
+	if (data.path[1] == NULL)
+		ft_error("Error: Command not found");
 }

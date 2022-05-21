@@ -6,7 +6,7 @@
 #    By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/16 11:24:21 by amiguez           #+#    #+#              #
-#    Updated: 2022/05/18 17:24:57 by amiguez          ###   ########.fr        #
+#    Updated: 2022/05/21 08:44:20 by amiguez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,8 @@ END		=	\033[0m
 
 NORMITEST	=
 NORMINETTE	= $(shell norminette $(SRCS) | grep -i 'Error')
+
+SANITIZE = -g3 -fsanitize=address
 
 # /////////////////////////////////
 
