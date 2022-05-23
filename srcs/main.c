@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:55:55 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/21 10:37:13 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:26:20 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	ft_first_proc(t_pipe *data, char **env, char *infile)
 
 	fd = open(infile, O_RDONLY);
 	if (fd < 0)
-		ft_error("Error: Open failed");
+	{
+		ft_printf("zsh: no such file or directory: %s\n", infile);
+		return ;
+	}
 	data->pid[0] = fork();
 	if (data->pid[0] == 0)
 	{

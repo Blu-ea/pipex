@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:56:47 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/21 09:23:22 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:33:34 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	parsing(int argc, char **argv, char **env, t_pipe *data)
 		ft_error("Error: Command not found");
 	data->path[2] = NULL;
 	data->cmd[2] = NULL;
-	ft_print_tab(data->path, "path");
 }
 
 char	*find_path(char *cmd, char *env)
