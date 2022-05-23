@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:56:47 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/23 18:33:34 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:45:29 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	parsing(int argc, char **argv, char **env, t_pipe *data)
 {
+	if (argc != 5)
+		ft_error("Usage : ./pipex <infile> <cmd1> <cmd2> <outfile>");
 	while (*env && ft_strncmp(*env, "PATH=", 5))
 		env++;
 	if (!*env)

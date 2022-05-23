@@ -6,7 +6,7 @@
 #    By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/16 11:24:21 by amiguez           #+#    #+#              #
-#    Updated: 2022/05/21 08:44:20 by amiguez          ###   ########.fr        #
+#    Updated: 2022/05/23 18:50:26 by amiguez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ NAME := pipex
 # /////////////////////////////////
 
 LST_SRCS	:=	main.c\
-				pars.c\
-				debug.c
+				pars.c
 LST_OBJS	:=	$(LST_SRCS:.c=.o)
 LST_INCS	:=	pipex.h
 LST_LIBFT	:=	libft.a
@@ -38,7 +37,7 @@ LIBFT	:=	$(addprefix $(DIR_LIBFT)/, $(LST_LIBFT))
 # /////////////////////////////////
 
 CC		:=	gcc
-CFLAGS	:=	#-Werror -Wextra -Wall
+CFLAGS	:=	-Werror -Wextra -Wall
 
 # /////////////////////////////////
 
@@ -85,6 +84,10 @@ $(DIR_OBJS)		:
 
 $(LIBFT)	:
 	make -C libft
+
+# /////////////////////////////////
+
+bonus : 
 
 # /////////////////////////////////
 

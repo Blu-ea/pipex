@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:55:55 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/23 18:26:20 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:47:45 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	main(int argc, char **argv, char **env)
 {
 	t_pipe	data;
 
-	if (argc != 5)
-		ft_error("Usage : ./pipex <infile> <cmd1> <cmd2> <outfile>");
 	parsing(argc, argv, env, &data);
 	pipe(data.pipe);
 	chek_pipe(data);
@@ -36,7 +34,8 @@ int	main(int argc, char **argv, char **env)
 
 void	ft_error(char *str)
 {
-	perror(str);
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
 	exit(0);
 }
 
