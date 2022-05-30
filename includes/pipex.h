@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:53:13 by amiguez           #+#    #+#             */
-/*   Updated: 2022/05/21 10:09:45 by amiguez          ###   ########.fr       */
+/*   Updated: 2022/05/27 09:06:47 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_pipe
 //////////// main.c ////////////
 
 // int		main(int argc, char **argv);
-void	ft_error(char *str);
+void	ft_error(char *str, t_pipe *data);
 void	ft_first_proc(t_pipe *data, char **env, char *infile);
 void	ft_second_proc(t_pipe *data, char **env, char *outfile);
 void	ft_leave(t_pipe data);
@@ -38,7 +38,9 @@ void	ft_leave(t_pipe data);
 
 void	parsing(int argc, char **argv, char **env, t_pipe *data);
 char	*find_path(char *cmd, char *env);
-void	chek_pipe(t_pipe data);
+void	chek_pipe(t_pipe *data);
+void	ft_free_path(char **path);
+char	*ft_return_pars(char ***path, char **sub);
 
 /////////// debug.c ////////////
 
