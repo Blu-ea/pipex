@@ -13,10 +13,11 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 
 typedef struct s_pipe
 {

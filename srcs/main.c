@@ -23,7 +23,8 @@ int	main(int argc, char **argv, char **env)
 	if (close (data.pipe[1]) == -1)
 		ft_error("Error : Close failed", &data);
 	ft_second_proc(&data, env, argv[4]);
-	waitpid(data.pid[1], 0, 0);
+	if(data.pid[0] != 0)
+		waitpid(data.pid[1], 0, 0);
 	unlink("4");
 	unlink("3");
 	if (close(data.pipe[0]) == -1)
@@ -63,6 +64,7 @@ void	ft_first_proc(t_pipe *data, char **env, char *infile)
 	if (fd < 0)
 	{
 		ft_printf("zsh: no such file or directory: %s\n", infile);
+		data->pid[0] = 0;
 		return ;
 	}
 	data->pid[0] = fork();
@@ -77,6 +79,8 @@ void	ft_first_proc(t_pipe *data, char **env, char *infile)
 		execve (data->path[0], data->cmd[0], env);
 		ft_error("Error: Execve 1 failed", data);
 	}
+	// free(data->cmd[0]);
+	// data->cmd[0] = NULL;
 	close(fd);
 }
 
@@ -99,6 +103,8 @@ void	ft_second_proc(t_pipe *data, char **env, char *outfile)
 		execve (data->path[1], data->cmd[1], env);
 		ft_error("Error: Execve 2 failed", data);
 	}
+	// free(data->cmd[1]);
+	// data->cmd[1] = NULL;
 	close(fd);
 }
 
@@ -106,9 +112,9 @@ void	ft_leave(t_pipe data)
 {
 	free(data.path[0]);
 	free(data.path[1]);
-	free(data.cmd[0][0]);
-	free(data.cmd[0][1]);
-	free(data.cmd[1][0]);
-	free(data.cmd[1][1]);
+	ft_free_2d_array(data.cmd[0]);
+	ft_free_2d_array(data.cmd[1]);
+	// free(data.cmd[0]);
+	// free(data.cmd[1]);
 	exit(0);
 }

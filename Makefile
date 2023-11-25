@@ -37,7 +37,9 @@ LIBFT	:=	$(addprefix $(DIR_LIBFT)/, $(LST_LIBFT))
 # /////////////////////////////////
 
 CC		:=	gcc
-CFLAGS	:=	-Werror -Wextra -Wall
+SANITIZE = -g3 -fsanitize=address
+CFLAGS	:=	-Werror -Wextra -Wall -g3 
+# ${SANITIZE}
 
 # /////////////////////////////////
 
@@ -58,7 +60,6 @@ END		=	\033[0m
 NORMITEST	=
 NORMINETTE	= $(shell norminette $(SRCS) | grep -i 'Error')
 
-SANITIZE = -g3 -fsanitize=address
 
 # /////////////////////////////////
 
@@ -76,7 +77,7 @@ else
 endif
 
 $(DIR_OBJS)/%.o	:	$(DIR_SRCS)/%.c $(INCS) Makefile | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ 
 	printf "$(ERASE)$(BLUE)$(BOLD)Compiling Pipex : $<$(END)"
 
 $(DIR_OBJS)		:
