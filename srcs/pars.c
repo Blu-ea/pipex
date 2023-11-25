@@ -46,7 +46,7 @@ char	*find_path(char *cmd, char *env)
 		while (path[i])
 		{
 			sub = ft_strjoin(path[i], "/");
-			sub = ft_strjoin_gnl(sub, cmd);
+			sub = ft_strjoin_free(sub, cmd, FREE_S1);
 			if (access(sub, F_OK) == 0)
 				return (ft_return_pars(&path, &sub));
 			free(sub);
