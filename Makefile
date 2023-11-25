@@ -84,6 +84,8 @@ $(DIR_OBJS)		:
 	mkdir -p $(DIR_OBJS)
 
 $(LIBFT)	:
+	git submodule init libft
+	git submodule update libft
 	make -C libft
 
 # /////////////////////////////////
